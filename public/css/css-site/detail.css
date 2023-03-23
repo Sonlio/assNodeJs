@@ -1,0 +1,293 @@
+/* DETAIL */
+.detail {
+    width: 1200px;
+    margin: auto;
+}
+
+.box-detail {
+    display: flex;
+}
+
+.box-left-detail {
+    width: 25%;
+    padding: 10px 10px;
+}
+
+.box-left-detail > img {
+    width: 100%;
+}
+
+.box-right-detail {
+    width: 65%;
+    padding: 10px 30px;
+}
+
+h3.name-book-detail {
+    color: #282828;
+    font-weight: 600;
+    font-size: 24px;
+    text-transform: capitalize;
+    margin-bottom: 15px;
+}
+
+.list-unstyle {
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.list-unstyle > li {
+    color: #181818;
+    line-height: 22px;
+}
+
+.list-value {
+    color: #6f9a37;
+}
+
+.price-book-detail {
+    margin-bottom: 40px;
+    color: #6f9a37;
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.price-book-detail > del {
+    color: #999999;
+    font-size: 16px;
+    font-weight: 400;
+    margin-left: 5px;
+}
+
+.add-to-cart {
+    display: flex;
+    align-items: center;
+}
+
+.count-input > span {
+    font-size: 17px;
+    margin-right: 5px;
+}
+
+.count-input > input {
+    color: #333;
+    background-color: #eeeeee;
+    height: 48px;
+    padding: 2.8px 8px;
+    width: 48px;
+    font-size: 16px;
+    border-radius: 50%;
+    text-align: center;
+    font-weight: 600;
+    border: none;
+    outline: none;
+}
+
+.count-input > input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.add-cart-btn > a {
+    padding: 15px 30px;
+    color: #333;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: capitalize;
+    border: 2px solid #6f9a37;
+    border-radius: 4px;
+    margin-left: 30px;
+    transition: all 300ms;
+}
+
+.add-cart-btn > a:hover {
+    background: #6f9a37;
+    color: #fff;
+}
+
+/* REVIEW */
+.review {
+    margin-top: 60px;
+    border-top: 1px solid #ccc;
+    padding: 20px 0px;
+}
+
+.show-review {
+    margin-bottom: 50px;
+}
+
+.title-show-review > h2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.comment-show-review {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.avatar {
+    width: 60px;
+    margin-right: 10px;
+}
+
+.avatar > img {
+    width: 100%;
+}
+
+.text {
+    border: 1px solid #ececec;
+    width: 100%;
+    padding: 10px 10px 0px 10px;
+    border-radius: 3px;
+    position: relative;
+}
+
+.text::before {
+    content: "";
+    background: #fff;
+    border-bottom: 1px solid #ececec;
+    border-left: 1px solid #ececec;
+    display: block;
+    height: 10px;
+    left: -6px;
+    position: absolute;
+    top: 10px;
+    transform: rotate(45deg);
+    width: 10px;
+}
+
+.rating-reviewed {
+    display: flex;
+    margin: 10px 0px 20px 0px;
+}
+
+.icon-star {
+    font-size: 12px;
+}
+
+.icon-star::before {
+    content: "";
+    font-family: "Font Awesome 5 Free";
+    color: #b6b6b6;
+    margin-right: 3px;
+}
+
+.star-on::before {
+    color: #eccd00;
+}
+
+h6.author {
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+h6.author > span {
+    text-transform: capitalize;
+}
+
+.text > p {
+    margin-bottom: 18px;
+    font-size: 15px;
+    color: #333;
+}
+
+.title-rating > h2 {
+    font-size: 20px;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.rating > p {
+    font-size: 16px;
+    color: #5c5c5c;
+    margin-bottom: 15px;
+}
+
+.rating-block {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.rating-block > input {
+    display: none;
+}
+
+.rating-block > label::before {
+    content: "";
+    font-family: "Font Awesome 5 Free";
+    position: relative;
+    font-size: 16px;
+    color: #e3e3e3;
+    font-weight: 900;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.rating-block > input[type="radio"]:checked ~ label::before,
+.rating-block > label:hover::before,
+.rating-block > label:hover ~ label::before {
+    color: #fec701;
+}
+
+.form-rate > .form-group {
+    margin-bottom: 20px;
+}
+
+.form-rate > .form-group > label {
+    display: block;
+    margin: 25px 0px 7px 0px;
+    color: #5c5c5c;
+}
+
+.form-rate > .form-group > .form-control {
+    width: 100%;
+    height: 150px;
+    border: 1px solid #ececec;
+    background: #f4f4f4;
+    outline: none;
+    padding: 10px 15px;
+    font-size: 15px;
+    color: #3c3a3a;
+    line-height: 30px;
+    border-radius: 3px;
+}
+
+.submit-btn-rate > button {
+    height: 50px;
+    padding: 0 30px;
+    display: inline-flex;
+    align-items: center;
+    color: #fff;
+    background: #333;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    text-shadow: none;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.submit-btn-rate > button:hover {
+    background: #62ab00;
+    color: #fff;
+}
+
+.login-to-review {
+    font-weight: bold;
+}
+
+.login-to-review > a {
+    color: red;
+}

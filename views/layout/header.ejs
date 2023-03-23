@@ -1,0 +1,34 @@
+<!-- TOP HEADER -->
+<section class="header">
+    <div class="welcome">
+        <p>Welcome to Bookstore</p>
+    </div>
+    <div class="authentication">
+        <a href="/account/register" class="link-register">Register</a>
+        <% if(user) { %>
+            <span><%= user.fullName%></span>
+            <a href="/account/logout">Đăng xuất</a>
+        <% } else { %>
+            <a href="/account/login" class="link-login">Login</a>
+        <% } %>
+    </div>
+</section>
+
+<!-- MENU -->
+<header>
+    <div class="header-menu">
+        <div class="logo">
+            <a href="/"><h2>Evo<span>Book</span></h2></a>
+        </div>
+        <div class="main-menu">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div class="shopping-cart">
+            <img src="http://www.theme-oxygen.com/envato/evobook/preview/html/images/basket.png" alt="Icon-cart">
+        </div>
+    </div>
+</header>

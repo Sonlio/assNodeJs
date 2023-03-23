@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>EvBook - Admin</title>
+	<link href="/css/css-admin/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/css-admin/font-awesome.min.css" rel="stylesheet">
+	<link href="/css/css-admin/datepicker3.css" rel="stylesheet">
+	<link href="/css/css-admin/styles.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	
+	<!--Custom Font-->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+</head>
+<body>
+
+    <%- include('../layout/headerAdmin') %>
+    
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="/">
+					<em class="fa fa-home"></em>
+				</a></li>
+				<li class="active">Dashboard</li>
+			</ol>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Dashboard</h1>
+			</div>
+		</div><!--/.row-->
+		
+		<div class="panel panel-container">
+			<div class="row">
+				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-teal panel-widget border-right">
+						<div class="row no-padding"><em class="fa fa-xl fa-shopping-cart color-blue"></em>
+							<div class="large">120</div>
+							<div class="text-muted">New Orders</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-blue panel-widget border-right">
+						<div class="row no-padding"><em class="fa fa-xl fa-comments color-orange"></em>
+							<div class="large">52</div>
+							<div class="text-muted">Comments</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-orange panel-widget border-right">
+						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
+							<div class="large">24</div>
+							<div class="text-muted">New Users</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-red panel-widget ">
+						<div class="row no-padding"><em class="fa fa-xl fa-cookie color-red"></em>
+							<div class="large"><%= products.length %></div>
+							<div class="text-muted">Products</div>
+						</div>
+					</div>
+				</div>
+			</div><!--/.row-->
+		</div>
+
+		<!-- TABLE -->
+		<div class="limiter">
+			<div class="container-table100">
+				<div class="wrap-table100">
+					<div class="table100">
+						<table>
+							<thead>
+								<tr class="table100-head">
+									<th>Name Product</th>
+									<th>Price</th>
+									<th>Discount</th>
+									<th>Author</th>
+									<th>ISBN</th>
+									<th>Year</th>
+									<th>Image</th>
+									<th>Description</th>
+									<th>Review Count</th>
+									<th>Average Score</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% if(products.length > 0) {
+									for(const product of products) { 
+										const {_id, nameProduct, price, discount, author, isbn, year, image, description, reviewCount, averageScore} = product;
+										%>
+									<tr>
+										<td><%= nameProduct %></td>
+										<td><%= price.toLocaleString('vn-VN') %> đ</td>
+										<td><%= discount %>%</td>
+										<td><%= author %></td>
+										<td><%= isbn %></td>
+										<td><%= year %></td>
+										<td class="td-img" ><img src="/images/images-product/<%= image %>" alt=""></td>
+										<td><%= description %></td>
+										<td><%= reviewCount %></td>
+										<td><%= averageScore %></td>
+										<td class="td-action">
+											<a class="edit" title="Sửa" href="/admin/editProduct/<%= _id %>"><em class="fa fa-pen-to-square">&nbsp;</em></a> | 
+											<a class="delete" title="Xóa" href="/admin/deleteProduct/<%= _id %>"><em class="fa fa-trash">&nbsp;</em></a>
+										</td>
+									</tr>
+								<% } } else { %>
+									<tr><td colspan="11">List product is empty!</td></tr>
+								<% } %>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	<!--/.main-->
+		
+</body>
+</html>

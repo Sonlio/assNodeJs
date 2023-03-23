@@ -1,0 +1,259 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+/* HEADER TOP */
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0px;
+    border-bottom: 1px solid rgb(221, 219, 219);
+}
+
+.welcome {
+    width: 50%;
+    text-align: center;
+}
+
+.welcome > p {
+    margin-bottom: 0;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #212121;
+    text-transform: uppercase;
+    padding-top: 2px;
+}
+
+.authentication {
+    width: 50%;
+    text-align: center;
+}
+
+.authentication > a {
+    color: #252525;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 300ms ease-in 0s;
+    padding: 0px 20px;
+}
+
+.authentication > a:hover {
+    color: #c38748;
+    background: #fff;
+}
+
+/* MENU */
+.header-menu {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0px;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.logo {
+    width: 30%;
+    text-align: right;
+}
+
+.logo > a > h2 {
+    font-size: 54px;
+    font-weight: 900;
+    color: #3b4251;
+}
+
+.logo > a > h2 > span {
+    color: #6f9a37;
+}
+
+.main-menu {
+    width: 50%;
+}
+
+.main-menu > ul {
+    display: flex;
+    justify-content: center;
+}
+
+.main-menu > ul > li {
+    list-style: none;
+}
+
+.main-menu > ul > li > a {
+    color: #252525;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0 19px;
+    text-transform: uppercase;
+    transition: all 300ms ease-in 0s;
+}
+
+.main-menu > ul > li > a:hover {
+    color: #c38748;
+    background: #fff;
+}
+
+.shopping-cart {
+    margin-right: 100px;
+    width: 10%;
+    text-align: left;
+}
+
+.shopping-cart > img {
+    color: #6f9a37;
+}
+
+/* PRODUCTS */
+.title {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 800;
+    color: #3b4251;
+    margin-bottom: 35px;
+}
+
+.main-product {
+    width: 1170px;
+    margin: auto;
+}
+
+.row-product {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-product {
+    width: 20%;
+    padding: 20px 30px;
+    position: relative;
+    text-decoration: none;
+}
+
+.top-discount-book {
+    position: absolute;
+    z-index: 9999;
+    border-radius: 100%;
+    padding: 10px 3px;
+    background: #d20b14;
+    color: #fff;
+    right: 13px;
+    top: 10px;
+}
+
+.img-book > img {
+    width: 100%;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    border-radius: 3px;
+}
+
+.name-book {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111;
+    margin-top: 15px;
+}
+
+.author-book {
+    font-weight: 400;
+    font-style: italic;
+    line-height: 24px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.price-book {
+    font-size: 18px;
+    font-weight: 600;
+    color: #b80909;
+    width: 100%;
+}
+
+.price-book > del {
+    font-size: 13px;
+    font-weight: 400;
+    color: #999;
+    margin-left: 10px;
+}
+
+/* FOOTER */
+.footer {
+    background: #06080f;
+    padding-top: 30px;
+    margin-top: 50px;
+}
+
+.footer-top {
+    width: 1170px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #6f9a37;
+}
+
+.col-footer {
+    width: 33%;
+    padding: 10px 20px;
+}
+
+.col-footer > h3 {
+    color: #fff;
+    margin-bottom: 25px;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.col-footer > p {
+    line-height: 20px;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.icon-headphone {
+    text-align: center;
+}
+
+h2.phone-number {
+    color: #fff;
+    font-weight: 600;
+    font-size: 30px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.copyright {
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0px;
+    margin-top: 10px;
+}
+
+/* FONT AWESOME */
+.fa-map-marker, .fa-phone, .fa-envelope, .fa-globe {
+    color: #6f9a37;
+    margin-right: 10px;
+}
+.fa-headphones {
+    color: #6f9a37;
+    text-align: center;
+}
