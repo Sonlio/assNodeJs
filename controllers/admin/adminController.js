@@ -1,11 +1,28 @@
 const Products = require('../../models/productsModel');
+const Comments = require('../../models/commentsModel');
+const Users = require('../../models/usersModel');
 
 exports.getAllProduct = (req, res, next) => {
     Products
         .find()
         .then(result => {
+            return Promise.all([result, Comments.find(), Users.find()])
+            // return Comments.find().then(comments => {
+            //     res.render('admin/index', {
+            //         products: result,
+            //         comments: comments
+            //     })
+            // })
+        })
+        .then(result => {
+            const products = result[0];
+            const comments = result[1];
+            const users = result[2];
+
             res.render('admin/index', {
-                products: result
+                products: products,
+                comments: comments,
+                users: users
             })
         })
         .catch(err => {

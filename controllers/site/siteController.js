@@ -77,7 +77,7 @@ exports.insertComment = (req, res, next) => {
         .findById(idProd)
         .then(prod => {
             prod.reviewCount += 1;
-            return prod.save()
+            return prod.save();
         })
         .then(result => {
             return insertComment.save()
@@ -95,11 +95,22 @@ exports.insertComment = (req, res, next) => {
 
 exports.deleteComment = (req, res, next) => {
     const idComment = req.params.idComment;
-
+    let productId;
     Comments
-        .findByIdAndRemove(idComment)
-        .then(result => {
-            
-            res.redirect('/products/detail/')
+        .findById(idComment)
+        .then(comment => {
+            productId = comment.productId;
+            return Products.findById(productId) 
         })
+        .then(product => {
+            product.reviewCount -= 1;
+            return product.save();
+        })
+        .then(result => {
+            return Comments.findByIdAndRemove(idComment);
+        })
+        .then(result => {
+            res.redirect('/products/detail/'+productId);
+        })
+        .catch(err => console.log(err))
 }

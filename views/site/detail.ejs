@@ -40,7 +40,13 @@
         </div>
         <div class="review">
             <div class="show-review">
-                <div class="title-show-review"><h2><%= reviewCount %> Review For <%= nameProduct %></h2></div>
+                <div class="title-show-review">
+                    <% if(reviewCount > 0) { %>
+                        <h2><%= reviewCount %> Review For <%= nameProduct %></h2>
+                    <% } else { %>
+                        <h2>Chưa có đánh giá nào!</h2>
+                    <% } %>
+                </div>
                <% for(const comment of comments) {
                     const {content, dateComment, rating} = comment.comment;
                     const dateFormat = `${String(dateComment.getDate()).padStart(2, 0)}/${String(dateComment.getMonth() + 1).padStart(2, 0)}/${dateComment.getFullYear()}`
@@ -70,6 +76,7 @@
                     </div>
                <% } %>
             </div>
+            
             <% if(user) { %>
                 <div class="title-rating"><h2>Add A Review</h2></div>
                 <div class="rating">

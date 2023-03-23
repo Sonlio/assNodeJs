@@ -23,7 +23,6 @@ app.use(express.static('./public'));
 app.use(session({
     secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
     saveUninitialized:true,
-    // store: new FileStore(),
     resave: false
 }));
 
