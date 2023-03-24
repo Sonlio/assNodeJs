@@ -135,7 +135,7 @@ h3.name-book-detail {
 }
 
 .avatar {
-    width: 60px;
+    width: 40px;
     margin-right: 10px;
 }
 
@@ -167,11 +167,11 @@ h3.name-book-detail {
 
 .rating-reviewed {
     display: flex;
-    margin: 10px 0px 20px 0px;
+    margin-bottom: 10px;
 }
 
 .icon-star {
-    font-size: 12px;
+    font-size: 10px;
 }
 
 .icon-star::before {
@@ -186,8 +186,8 @@ h3.name-book-detail {
 }
 
 h6.author {
-    margin-bottom: 15px;
-    font-size: 16px;
+    margin-bottom: 9px;
+    font-size: 13px;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -201,6 +201,7 @@ h6.author > span {
     display: inline-block;
     color: red;
     margin-bottom: 10px;
+    font-size: 13px;
 }
 
 .editComment {
@@ -209,7 +210,7 @@ h6.author > span {
 }
 
 .text > p {
-    margin-bottom: 18px;
+    margin-bottom: 12px;
     font-size: 15px;
     color: #333;
 }

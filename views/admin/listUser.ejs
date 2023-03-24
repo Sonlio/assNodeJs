@@ -42,6 +42,8 @@
 						<table>
 							<thead>
 								<tr class="table100-head">
+									<th>STT</th>
+									<th>Image</th>
 									<th>Full Name</th>
 									<th>Email</th>
 									<th>Phone Number</th>
@@ -52,10 +54,13 @@
 							</thead>
 							<tbody>
 								<% if(users.length > 0) {
+									let i = 1;
 									for(const user of users) { 
-										const {_id, fullName, email, phoneNumber, address, typeUser} = user;
+										const {_id, fullName, email, phoneNumber, address, image, typeUser} = user;
 										%>
 									<tr>
+										<td><%= i %></td>
+										<td class="td-img" ><img src="/images/images-user/<%= image %>" alt=""></td>
 										<td><%= fullName %></td>
 										<td><%= email %></td>
 										<td><%= phoneNumber %></td>
@@ -65,7 +70,7 @@
 											<a class="delete" title="Xóa" href="/admin/deleteUser/<%= _id %>"><em class="fa fa-trash">&nbsp;</em></a>
 										</td>
 									</tr>
-								<% } } else { %>
+								<% i++ } } else { %>
 									<tr><td colspan="11">List user is empty!</td></tr>
 								<% } %>
 							</tbody>

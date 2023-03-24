@@ -4,11 +4,14 @@
         <p>Welcome to Bookstore</p>
     </div>
     <div class="authentication">
-        <a href="/account/register" class="link-register">Register</a>
         <% if(user) { %>
             <span class="name-user-login">Hello baby: <%= user.fullName%></span>
             <a class="logout" href="/account/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+            <% if(user.typeUser === 1) { %>
+                <a href="/admin">Admin</a>
+            <% }  %>
         <% } else { %>
+            <a href="/account/register" class="link-register">Register</a>
             <a href="/account/login" class="link-login">Login</a>
         <% } %>
     </div>

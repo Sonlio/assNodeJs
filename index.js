@@ -2,9 +2,13 @@ const express = require('express');
 const session = require('express-session');
 // const FileStore = require('session-file-store')(session);
 const bodyParser = require('body-parser');
+
+// Khai báo sử dụng các router
 const siteRouter = require('./routers/site/siteRouter');
 const accountRouter = require('./routers/account/accountRouter');
 const adminRouter = require('./routers/admin/adminRouter');
+const apiRouter = require('./routers/api/apiRouter');
+
 const mongoose = require('mongoose');
 
 const app = express();
@@ -37,6 +41,7 @@ app.use((req, res, next) => {
 app.use(accountRouter);
 app.use(siteRouter);
 app.use(adminRouter);
+app.use(apiRouter);
 
 
 mongoose.connect("mongodb://127.0.0.1:27017/assNodeJs")

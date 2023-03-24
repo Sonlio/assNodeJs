@@ -2,7 +2,7 @@ const Users = require('../../models/usersModel');
 const bcrypt = require('bcryptjs');
 
 exports.getRegister = (req, res, next) => {
-    res.render('account/register', {message: ''});
+    res.render('account/register');
 }
 
 exports.register = (req, res, next) => {
@@ -12,6 +12,8 @@ exports.register = (req, res, next) => {
     const phoneNumber = req.body.phoneNumber;
     const address = req.body.address;
     const typeUser = req.body.typeUser;
+    const file = req.file;
+    const fileName = file.filename;
 
     Users.findOne({email: email})
         .then(user => {
@@ -26,7 +28,8 @@ exports.register = (req, res, next) => {
                 email: email, 
                 password: hashedPassword, 
                 phoneNumber: phoneNumber, 
-                address: address, 
+                address: address,
+                image: fileName,
                 typeUser: typeUser
             });
             return insertUser.save();
@@ -38,7 +41,7 @@ exports.register = (req, res, next) => {
 }
 
 exports.getLogin = (req, res, next) => {
-    res.render('account/login', {message: ''});
+    res.render('account/login');
 }
 
 exports.login = (req, res, next) => {
@@ -48,7 +51,7 @@ exports.login = (req, res, next) => {
     Users.findOne({email: email})
         .then(user => {
             if(!user) {
-                return res.render('account/login', {message: "Email không tồn tại!"});
+                return res.send("<h1>Email không tồn tại!</h1>")
             }
 
             return Promise.all([bcrypt.compare(password, user.password), user])
@@ -58,8 +61,9 @@ exports.login = (req, res, next) => {
             const user = result[1];
 
             if(!isMatch) {
-                return res.render('account/login', {message: "Password không trùng khớp!"});
+                return res.send("<h1>Password không trùng khớp!</h1>")
             }
+            
             req.session.user = user;
             return res.redirect('/');
         })

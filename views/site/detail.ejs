@@ -54,7 +54,7 @@
                %>
                     <div class="comment-show-review">
                         <div class="avatar">
-                            <img src="https://htmldemo.net/pustok/pustok/image/icon/author-logo.png" alt="">
+                            <img src="/images/images-user/<%= comment.userComment.image %>" alt="">
                         </div>
                         <div class="text">
                             <div class="rating-reviewed">
@@ -73,7 +73,7 @@
                             <% if(userExist) {
                                 if(comment.userComment._id == userExist._id) { %>
                                     <a class="deteteComment" href="/products/detail/deleteComment/<%= comment.comment._id %>">Xóa</a>
-                                    <a class="editComment" href="/products/detail/editComment/<%= comment.comment._id %>">Sửa</a>
+                                    <!-- <a class="editComment" href="/products/detail/editComment/<%= comment.comment._id %>">Sửa</a> -->
                                <% }
                             } %> 
                         </div>

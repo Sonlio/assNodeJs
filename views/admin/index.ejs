@@ -79,6 +79,7 @@
 						<table>
 							<thead>
 								<tr class="table100-head">
+									<th>STT</th>
 									<th>Name Product</th>
 									<th>Price</th>
 									<th>Discount</th>
@@ -93,10 +94,12 @@
 							</thead>
 							<tbody>
 								<% if(products.length > 0) {
+									let i = 1;
 									for(const product of products) { 
 										const {_id, nameProduct, price, discount, author, isbn, year, image, reviewCount, averageScore} = product;
 										%>
 									<tr>
+										<td><%= i %></td>
 										<td><%= nameProduct %></td>
 										<td><%= price.toLocaleString('vn-VN') %> đ</td>
 										<td><%= discount %>%</td>
@@ -119,7 +122,7 @@
 											<a class="delete" title="Xóa" href="/admin/deleteProduct/<%= _id %>"><em class="fa fa-trash">&nbsp;</em></a>
 										</td>
 									</tr>
-								<% } } else { %>
+								<% i++ } } else { %>
 									<tr><td colspan="11">List product is empty!</td></tr>
 								<% } %>
 							</tbody>

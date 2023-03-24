@@ -21,7 +21,7 @@
                 <h3>Register</h3>
             </div>
             <div class="body-register">
-                <form action="" method="post" class="register-form">
+                <form action="" method="post" class="register-form" enctype="multipart/form-data">
                     <div class="form-group">
                         <span class="icon"><i class="fa-solid fa-user"></i></span>
                         <input class="form-control" type="text" placeholder="Full name" name="fullName">
@@ -42,11 +42,14 @@
                         <span class="icon"><i class="fa-sharp fa-solid fa-location-dot"></i></span>
                         <input class="form-control" type="text" placeholder="Address" name="address">
                     </div>
+                    <div class="form-group">
+                        <span class="icon"><i class="fa-sharp fa-solid fa-image"></i></span>
+                        <input class="form-control" type="file" name="image">
+                    </div>
+
                     <input type="hidden" value="0" name="typeUser">
 
-                    <% if(message) { %>
-                        <span class="err-register"><%= message%></span>
-                    <% } %>
+                    <span class="err-register"></span>
 
                     <div class="btn">
                         <button type="submit" class="btn-register">Register</button>

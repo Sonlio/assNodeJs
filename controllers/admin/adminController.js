@@ -141,6 +141,10 @@ exports.deleteProduct = (req, res, next) => {
             }
             return Products.findByIdAndRemove(idProd);
         })
+        .then(() => {
+            return Comments.deleteMany({productId: idProd})
+
+        })
         .then(result => {
             res.redirect('/admin')
         })
@@ -164,12 +168,12 @@ exports.getAllUser = (req, res, next) => {
         })
 }
 
-exports.deleteComment = (req, res, next) => {
+exports.deleteUser = (req, res, next) => {
     const idUser = req.params.idUser;
 
     Users.findByIdAndRemove(idUser)
-        .then(result => {
+        .then(() => {
             res.redirect('/admin/listUser')
         })
-        .then(err => console.log(err))
+        .catch(err => console.log(err))
 }

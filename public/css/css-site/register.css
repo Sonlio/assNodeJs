@@ -45,13 +45,17 @@
 }
 
 .form-control {
-    height: 33px;
+    height: 34px;
     border: 1px solid #ccc;
     border-width: 0 0 1px;
     padding: 6px 0px 6px 12px;
     outline: none;
     width: 91%;
     font-size: 14px;
+}
+
+input[type="file"] {
+    font-size: 13px;
 }
 
 .form-control:focus {
