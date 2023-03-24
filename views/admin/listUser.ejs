@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ADMIN</title>
+	<link href="/css/css-admin/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/css-admin/font-awesome.min.css" rel="stylesheet">
+	<link href="/css/css-admin/datepicker3.css" rel="stylesheet">
+	<link href="/css/css-admin/styles.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	
+	<!--Custom Font-->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+</head>
+<body>
+
+    <%- include('../layout/headerAdmin') %>
+    
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="/">
+					<em class="fa fa-home"></em>
+				</a></li>
+				<li class="active">List Users</li>
+			</ol>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">List Users</h1>
+			</div>
+		</div><!--/.row-->
+
+		<!-- TABLE -->
+		<div class="limiter">
+			<div class="container-table100">
+				<div class="wrap-table100">
+					<div class="table100">
+						<table>
+							<thead>
+								<tr class="table100-head">
+									<th>Full Name</th>
+									<th>Email</th>
+									<th>Phone Number</th>
+									<th>Address</th>
+									<th>Type User</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% if(users.length > 0) {
+									for(const user of users) { 
+										const {_id, fullName, email, phoneNumber, address, typeUser} = user;
+										%>
+									<tr>
+										<td><%= fullName %></td>
+										<td><%= email %></td>
+										<td><%= phoneNumber %></td>
+										<td><%= address %></td>
+										<td><%= typeUser %></td>
+										<td class="td-action">
+											<a class="delete" title="Xóa" href="/admin/deleteUser/<%= _id %>"><em class="fa fa-trash">&nbsp;</em></a>
+										</td>
+									</tr>
+								<% } } else { %>
+									<tr><td colspan="11">List user is empty!</td></tr>
+								<% } %>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	<!--/.main-->
+		
+</body>
+</html>

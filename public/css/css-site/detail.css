@@ -44,8 +44,14 @@ h3.name-book-detail {
     color: #6f9a37;
 }
 
+.description-detail {
+    font-size: 14px;
+    line-height: 22px;
+    color: #333;
+}
+
 .price-book-detail {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     color: #6f9a37;
     font-size: 23px;
     font-weight: 600;
@@ -189,6 +195,17 @@ h6.author {
 
 h6.author > span {
     text-transform: capitalize;
+}
+
+.deteteComment {
+    display: inline-block;
+    color: red;
+    margin-bottom: 10px;
+}
+
+.editComment {
+    color: green;
+    margin-left: 10px;
 }
 
 .text > p {

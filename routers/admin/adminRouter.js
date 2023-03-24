@@ -21,5 +21,6 @@ router.post('/admin/insertProduct', (upload.single('image')), adminController.in
 router.get('/admin/editProduct/:idProd', adminController.getUpdateProduct);
 router.post('/admin/editProduct', (upload.single('image')), adminController.updateProduct);
 router.get('/admin/deleteProduct/:idProd', adminController.deleteProduct);
-
+router.get('/admin/listUser', adminController.getAllUser);
+router.get('/admin/deleteUser/:idUser', adminController.deleteComment);
 module.exports = router;

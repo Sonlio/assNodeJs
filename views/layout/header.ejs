@@ -6,8 +6,8 @@
     <div class="authentication">
         <a href="/account/register" class="link-register">Register</a>
         <% if(user) { %>
-            <span><%= user.fullName%></span>
-            <a href="/account/logout">Đăng xuất</a>
+            <span class="name-user-login">Hello baby: <%= user.fullName%></span>
+            <a class="logout" href="/account/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
         <% } else { %>
             <a href="/account/login" class="link-login">Login</a>
         <% } %>
@@ -28,7 +28,7 @@
             </ul>
         </div>
         <div class="shopping-cart">
-            <img src="http://www.theme-oxygen.com/envato/evobook/preview/html/images/basket.png" alt="Icon-cart">
+            <!-- <img src="http://www.theme-oxygen.com/envato/evobook/preview/html/images/basket.png" alt="Icon-cart"> -->
         </div>
     </div>
 </header>

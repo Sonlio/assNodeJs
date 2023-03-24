@@ -2,27 +2,27 @@ const Products = require('../../models/productsModel');
 const Comments = require('../../models/commentsModel');
 const Users = require('../../models/usersModel');
 
-exports.getAllProduct = (req, res, next) => {
+exports.getAllProduct = async (req, res, next) => {
+    const result = await Comments.aggregate([
+        { $group: { _id: "$productId", totalRate: { $sum: "$rating" } } },
+    ]);
+
+    const totalRatings = [];
+    result.forEach(item => {
+        totalRatings.push({id: item._id.toString(), totalRate: item.totalRate})
+    })
+
     Products
         .find()
-        .then(result => {
-            return Promise.all([result, Comments.find(), Users.find()])
-            // return Comments.find().then(comments => {
-            //     res.render('admin/index', {
-            //         products: result,
-            //         comments: comments
-            //     })
-            // })
-        })
-        .then(result => {
-            const products = result[0];
-            const comments = result[1];
-            const users = result[2];
+        .then(async result => {
+            const countComment = await Comments.count({});
+            const countUser = await Users.count({});
 
             res.render('admin/index', {
-                products: products,
-                comments: comments,
-                users: users
+                products: result,
+                countComment: countComment,
+                countUser: countUser,
+                totalRatings: totalRatings
             })
         })
         .catch(err => {
@@ -150,4 +150,26 @@ exports.deleteProduct = (req, res, next) => {
             }
             next(err);
         })
+}
+
+exports.getAllUser = (req, res, next) => {
+    Users.find()
+        .then(users => {
+            res.render('admin/listUser', {
+                users: users
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+}
+
+exports.deleteComment = (req, res, next) => {
+    const idUser = req.params.idUser;
+
+    Users.findByIdAndRemove(idUser)
+        .then(result => {
+            res.redirect('/admin/listUser')
+        })
+        .then(err => console.log(err))
 }

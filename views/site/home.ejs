@@ -14,15 +14,15 @@
 
     <!-- PRODUCTS -->
     <section class="container">
-        <div class="title">
-            <h1>PRODUCTS</h1>
-        </div>
-        <div class="main-product">
-            <div class="row-product">
-                <% if(products.length > 0) {
-                    for(const product of products) { 
-                        const { _id, nameProduct, price, discount, author, isbn, year, image, description, reviewCount, averageScore} = product; %>
-
+            <div class="title">
+                <h1>PRODUCTS</h1>
+            </div>
+            <div class="main-product">
+                <div class="row-product">
+                    <% if(products.length > 0) { 
+                        for(const product of products) { 
+                            const { _id, nameProduct, price, discount, author, isbn, year, image, description, reviewCount, averageScore} = product;
+                        %>
                         <a class="col-product" href="products/detail/<%= _id %>">
                             <% if(discount > 0) { %>
                                 <div class="top-discount-book"><%= discount %>%</div>
@@ -39,11 +39,11 @@
                                 <% } %>
                             </p>
                         </a>
-               <% } } else { %>
-                        <h1>Not Found Any Products</h1>
-               <% } %>
-            </div>
-        </div>
+                <% } } else { %>
+                    <h1 class="not-fount-product" >Not Found Any Products</h1>
+                <% } %>
+                </div>
+            </div> 
     </section>
 
     <%- include('../layout/footer.ejs') %>

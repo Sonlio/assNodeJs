@@ -24,25 +24,19 @@ exports.getProductById = (req, res, next) => {
 
     Products
         .findById(idProd)
-        .then(product => {
-            return Promise.all([product, Comments.find({productId: idProd})]);
-        })
-        .then(result => {
-            const product = result[0];
-            const comments = result[1];
-
-            const userComment = comments.map(comment => {
+        .then(async product => { 
+            const commentByProduct = await Comments.find({productId: idProd});
+            const userComment = commentByProduct.map(comment => {
                 return Users.findOne({ _id: comment.userId })
                   .then(user => {
-                    return {
-                        comment: comment,
-                        userComment: user
-                    };
+                        return {
+                            userComment: user,
+                            comment: comment
+                        }
                   });
               });
 
-            return Promise.all(userComment)
-            .then(userComment => {
+            Promise.all(userComment).then(userComment => {
                 res.render('site/detail', {
                     product: product,
                     comments: userComment,
@@ -51,10 +45,7 @@ exports.getProductById = (req, res, next) => {
             })
         })
         .catch(err => {
-            if(!err.statusCode) {
-                err.statusCode = 500
-            }
-            next(err);
+            console.log(err);
         })
 }
 

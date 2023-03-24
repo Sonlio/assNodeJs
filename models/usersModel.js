@@ -26,10 +26,8 @@ const Users = new Schema({
         type: String,
         required: true
     },
-
     typeUser: {
         type: Number,
-        required: true
     }
 })
 

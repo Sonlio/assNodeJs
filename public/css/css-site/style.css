@@ -52,6 +52,13 @@ li {
     padding: 0px 20px;
 }
 
+.name-user-login {
+    color: green;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+}
+
 .authentication > a:hover {
     color: #c38748;
     background: #fff;
@@ -179,14 +186,16 @@ li {
 }
 
 .price-book {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 600;
     color: #b80909;
     width: 100%;
+    align-items: center;
+    display: flex;
 }
 
 .price-book > del {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
     color: #999;
     margin-left: 10px;
@@ -246,6 +255,11 @@ h2.phone-number {
     text-align: center;
     padding: 20px 0px;
     margin-top: 10px;
+}
+
+.not-fount-product {
+    text-align: center;
+    width: 100%;
 }
 
 /* FONT AWESOME */
