@@ -25,6 +25,7 @@ exports.getProductById = (req, res, next) => {
     Products
         .findById(idProd)
         .then(async product => { 
+            
             const commentByProduct = await Comments.find({productId: idProd});
             const userComment = commentByProduct.map(comment => {
                 return Users.findOne({ _id: comment.userId })

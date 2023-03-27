@@ -20,19 +20,27 @@
             <div class="title-login">
                 <h3>Login</h3>
             </div>
+
+            <!-- Xử lý form trước khi submit -->
+            <%
+                let errEmail, errPassword;
+
+                if(typeof errors !== "undefined") {
+                    errEmail = errors.email;
+                    errPassword = errors.password;
+            } %>
             <div class="body-login">
                 <form action="" method="post" class="login-form">
                     <div class="form-group">
                         <span class="icon"><i class="fa-sharp fa-solid fa-paper-plane"></i></span>
                         <input class="form-control" type="email" placeholder="Email" name="email">
+                        <span class="err-input"><%= errEmail %></span>
                     </div>
                     <div class="form-group">
                         <span class="icon"><i class="fa-sharp fa-solid fa-lock"></i></span>
                         <input class="form-control" type="password" placeholder="Password" name="password">
+                        <span class="err-input"><%= errPassword %></span>
                     </div>
-                    
-                        <span class="err-login" name="err"></span>
-
                     <div class="btn">
                         <button type="submit" class="btn-login">Login</button>
                     </div>

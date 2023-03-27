@@ -15,13 +15,7 @@ exports.register = (req, res, next) => {
     const file = req.file;
     const fileName = file.filename;
 
-    Users.findOne({email: email})
-        .then(user => {
-            if(user) {
-                return res.render('account/register', {message: "Email đã tồn tại, vui lòng nhập email khác!"});
-            }
-            return bcrypt.hash(password, 12)
-        })
+    bcrypt.hash(password, 12)
         .then(hashedPassword => {
             const insertUser = new Users({
                 fullName: fullName, 
@@ -46,24 +40,9 @@ exports.getLogin = (req, res, next) => {
 
 exports.login = (req, res, next) => {
     const email = req.body.email;
-    const password = req.body.password;
 
     Users.findOne({email: email})
         .then(user => {
-            if(!user) {
-                return res.send("<h1>Email không tồn tại!</h1>")
-            }
-
-            return Promise.all([bcrypt.compare(password, user.password), user])
-        })
-        .then(result => {
-            const isMatch = result[0];
-            const user = result[1];
-
-            if(!isMatch) {
-                return res.send("<h1>Password không trùng khớp!</h1>")
-            }
-            
             req.session.user = user;
             return res.redirect('/');
         })

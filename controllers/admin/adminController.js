@@ -113,8 +113,8 @@ exports.updateProduct = (req, res, next) => {
             product.year = year;
             product.description = description;
             product.image = fileName;
-            product.reviewCount = 19;
-            product.averageScore = 20
+            product.reviewCount = product.reviewCount;
+            product.averageScore = product.averageScore;
             return product.save();
         })
         .then(result => {

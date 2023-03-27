@@ -20,27 +20,44 @@
             <div class="title-register">
                 <h3>Register</h3>
             </div>
+
+            <!-- Xử lý form trước khi submit -->
+            <%
+                let errFullName, errEmail, errPassword, errPhoneNumber, errAddress;
+
+                if(typeof errors !== "undefined") {
+                    errFullName = errors.fullName;
+                    errEmail = errors.email;
+                    errPassword = errors.password;
+                    errPhoneNumber = errors.phoneNumber;
+                    errAddress = errors.address;
+            } %>
             <div class="body-register">
                 <form action="" method="post" class="register-form" enctype="multipart/form-data">
                     <div class="form-group">
                         <span class="icon"><i class="fa-solid fa-user"></i></span>
                         <input class="form-control" type="text" placeholder="Full name" name="fullName">
+                        <span class="err-input"><%= errFullName %></span>
                     </div>
                     <div class="form-group">
                         <span class="icon"><i class="fa-regular fa-envelope-open"></i></span>
                         <input class="form-control" type="email" placeholder="Email" name="email">
+                        <span class="err-input"><%= errEmail %></span>
                     </div>
                     <div class="form-group">
                         <span class="icon"><i class="fa-solid fa-lock"></i></span>
                         <input class="form-control" type="password" placeholder="Password" name="password">
+                        <span class="err-input"><%= errPassword %></span>
                     </div>
                     <div class="form-group">
                         <span class="icon"><i class="fa-solid fa-phone-volume"></i></span>
-                        <input class="form-control" type="text" placeholder="Phone Number" name="phoneNumber">
+                        <input class="form-control" type="number" placeholder="Phone Number" name="phoneNumber">
+                        <span class="err-input"><%= errPhoneNumber %></span>
                     </div>
                     <div class="form-group">
                         <span class="icon"><i class="fa-sharp fa-solid fa-location-dot"></i></span>
                         <input class="form-control" type="text" placeholder="Address" name="address">
+                        <span class="err-input"><%= errAddress %></span>
                     </div>
                     <div class="form-group">
                         <span class="icon"><i class="fa-sharp fa-solid fa-image"></i></span>

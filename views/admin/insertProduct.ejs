@@ -34,26 +34,45 @@
 			</div>
 		</div><!--/.row-->
 
+		<!-- Xử lý form trước khi submit -->
+		<%
+			let errNameProduct, errPrice, errDiscount, errAuthor, errIsbn, errYear, errDescription;
+
+			if(typeof errors !== "undefined") {
+				errNameProduct = errors.nameProduct;
+				errPrice = errors.price;
+				errDiscount = errors.discount;
+				errAuthor = errors.author;
+				errIsbn = errors.isbn;
+				errYear = errors.year;
+				errDescription = errors.description;
+		} %>
 		<!-- FORM -->
 		<div class="form-insert-product">
 			<form action="/admin/insertProduct" method="post" class="login-form" enctype="multipart/form-data">
 				<div class="form-group">
 					<input class="form-control-insert" type="text" placeholder="Name Product" name="nameProduct">
+					<span class="err-input"><%= errNameProduct %></span>
 				</div>
 				<div class="form-group">
-					<input class="form-control-insert" type="text" placeholder="Price" name="price">
+					<input class="form-control-insert" type="number" placeholder="Price" name="price">
+					<span class="err-input"><%= errPrice %></span>
 				</div>
 				<div class="form-group">
-					<input class="form-control-insert" type="text" placeholder="Discount (%)" name="discount">
+					<input class="form-control-insert" type="number" placeholder="Discount (%)" name="discount">
+					<span class="err-input"><%= errDiscount %></span>
 				</div>
 				<div class="form-group">
 					<input class="form-control-insert" type="text" placeholder="Author" name="author">
+					<span class="err-input"><%= errAuthor %></span>
 				</div>
 				<div class="form-group">
-					<input class="form-control-insert" type="text" placeholder="ISBN" name="isbn">
+					<input class="form-control-insert" type="number" placeholder="ISBN" name="isbn">
+					<span class="err-input"><%= errIsbn %></span>
 				</div>
 				<div class="form-group">
-					<input class="form-control-insert" type="text" placeholder="Year" name="year">
+					<input class="form-control-insert" type="number" placeholder="Year" name="year">
+					<span class="err-input"><%= errYear %></span>
 				</div>
                 <div class="form-group">
                     <div class="wrap-input-file">
@@ -62,8 +81,9 @@
 				</div>
                 <div class="form-group">
 					<textarea class="form-control-textarea" rows="10" placeholder="Description" name="description"></textarea>
+					<span class="err-input"><%= errDescription %></span>
 				</div>
-	
+
 				<div class="btn-insert-product">
 					<button type="submit">Thêm sản phẩm</button>
 				</div>

@@ -62,6 +62,13 @@ input[type="file"] {
     border-color: #6f9a37;
 }
 
+.err-input {
+    font-size: 12px;
+    color: red;
+    margin-top: 5px;
+    display: block;
+}
+
 .err-register {
     margin-top: 10px;
     display: block;
