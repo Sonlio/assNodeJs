@@ -67,6 +67,7 @@ input[type="file"] {
     color: red;
     margin-top: 5px;
     display: block;
+    margin-left: 48px;
 }
 
 .err-register {

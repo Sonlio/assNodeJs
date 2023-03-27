@@ -50,6 +50,23 @@ exports.getProductById = (req, res, next) => {
         })
 }
 
+exports.productSearch = (req, res, next) => {
+    const dataSearch = req.body.search;
+    
+    Products.find({ 
+        $or: [
+                { nameProduct: { $regex: new RegExp(dataSearch, 'i') } },
+                { author: { $regex: new RegExp(dataSearch, 'i') } },
+            ]
+        })
+        .then(product => {
+            res.render('site/productOfSearch', {
+                products: product
+            })
+        })
+        .catch(err => console.log(err))
+}
+
 exports.insertComment = (req, res, next) => {
     const idProd = req.params.idProd;
     const content = req.body.content

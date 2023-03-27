@@ -26,7 +26,12 @@
                     <li>Author: <span class="list-value"><%= author %></span></li>
                     <li>ISBN: <span class="list-value"><%= isbn %></span></li>
                 </ul>
-                <p class="price-book-detail"><%= (price - price * (discount / 100)).toLocaleString('vn-VN') %> đ<del><%= price.toLocaleString('vn-VN') %> đ</del></p>
+                <p class="price-book-detail">
+                    <%= (price - price * (discount / 100)).toLocaleString('vn-VN') %> đ
+                    <% if(discount > 0) { %>
+                        <del><%= price.toLocaleString('vn-VN') %> đ</del>
+                    <% } %>
+                </p>
                 <p class="description-detail"><%= description %></p>
                 <!-- <div class="add-to-cart">
                     <div class="count-input">

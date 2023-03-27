@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/css-site/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>HOME</title>
+</head>
+<body>
+    
+    <%- include('../layout/header') %>
+
+    <!-- PRODUCTS -->
+    <section class="container">
+            <div class="title">
+                <h1>PRODUCTS</h1>
+            </div>
+            <div class="main-product">
+                <div class="row-product">
+                    <% if(products.length > 0) { 
+                        for(const product of products) { 
+                            const { _id, nameProduct, price, discount, author, isbn, year, image, description, reviewCount, averageScore} = product;
+                        %>
+                        <a class="col-product" href="/products/detail/<%= _id %>">
+                            <% if(discount > 0) { %>
+                                <div class="top-discount-book"><%= discount %>%</div>
+                            <% } %>
+                            <div class="img-book">
+                                <img src="/images/images-product/<%= image %>" alt="">
+                            </div>
+                            <h2 class="name-book"><%= nameProduct %></h2>
+                            <p class="author-book"><%= author%></p>
+                            <p class="price-book">
+                                <%= (price - price * (discount / 100)).toLocaleString('vn-VN') %> đ
+                                <% if(discount > 0) { %>
+                                    <del><%= price.toLocaleString('vn-VN') %> đ</del>
+                                <% } %>
+                            </p>
+                        </a>
+                <% } } else { %>
+                    <h1 class="not-fount-product" >Not Found Any Products</h1>
+                <% } %>
+                </div>
+            </div> 
+    </section>
+
+    <%- include('../layout/footer.ejs') %>
+</body>
+</html>

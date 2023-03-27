@@ -9,6 +9,7 @@ exports.checkRegister = async (req, res, next) => {
     const fullName = lad.get(req.body, "fullName", "");
     const email = lad.get(req.body, "email", "");
     const password = lad.get(req.body, "password", "");
+    const confirmPassword = lad.get(req.body, "confirmPassword", "");
     const phoneNumber = lad.get(req.body, "phoneNumber", "");
     const address = lad.get(req.body, "address", "");
     
@@ -29,6 +30,12 @@ exports.checkRegister = async (req, res, next) => {
         errors.password = "Password không được để trống!";
     } else if(!validator.isLength(password, {min: 6})) {
         errors.password = "Password ít nhất 6 ký tự";
+    }
+
+    if(validator.isEmpty(confirmPassword)) {
+        errors.confirmPassword = "Confirm Password không được để trống!";
+    } else if(!validator.equals(password, confirmPassword)) {
+        errors.confirmPassword = "Xác nhận mật khẩu không trùng khớp!";
     }
 
     if(validator.isEmpty(phoneNumber)) {

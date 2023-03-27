@@ -23,7 +23,7 @@
 
             <!-- Xử lý form trước khi submit -->
             <%
-                let errFullName, errEmail, errPassword, errPhoneNumber, errAddress;
+                let errFullName, errEmail, errPassword, errConfirmPassword, errPhoneNumber, errAddress;
 
                 if(typeof errors !== "undefined") {
                     errFullName = errors.fullName;
@@ -31,6 +31,7 @@
                     errPassword = errors.password;
                     errPhoneNumber = errors.phoneNumber;
                     errAddress = errors.address;
+                    errConfirmPassword = errors.confirmPassword;
             } %>
             <div class="body-register">
                 <form action="" method="post" class="register-form" enctype="multipart/form-data">
@@ -48,6 +49,11 @@
                         <span class="icon"><i class="fa-solid fa-lock"></i></span>
                         <input class="form-control" type="password" placeholder="Password" name="password">
                         <span class="err-input"><%= errPassword %></span>
+                    </div>
+                    <div class="form-group">
+                        <span class="icon"><i class="fa-solid fa-check"></i></span>
+                        <input class="form-control" type="password" placeholder="Confirm Password" name="confirmPassword">
+                        <span class="err-input"><%= errConfirmPassword %></span>
                     </div>
                     <div class="form-group">
                         <span class="icon"><i class="fa-solid fa-phone-volume"></i></span>

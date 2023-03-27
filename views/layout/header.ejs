@@ -3,6 +3,14 @@
     <div class="welcome">
         <p>Welcome to Bookstore</p>
     </div>
+    <div class="search">
+        <div class="input-field">
+            <form action="/products/search" method="post">
+                <button class="btn-search" ><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input class="input-search" type="text" name="search" placeholder="Tìm kiếm">
+            </form>
+        </div>
+    </div>
     <div class="authentication">
         <% if(user) { %>
             <span class="name-user-login">Hello baby: <%= user.fullName%></span>
@@ -27,7 +35,7 @@
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/contact">Contact</a></li>
             </ul>
         </div>
         <div class="shopping-cart">

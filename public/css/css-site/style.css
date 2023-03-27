@@ -18,6 +18,7 @@ li {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 20px 0px;
     border-bottom: 1px solid rgb(221, 219, 219);
 }
@@ -35,6 +36,50 @@ li {
     color: #212121;
     text-transform: uppercase;
     padding-top: 2px;
+}
+
+.search {
+    width: 480px;
+}
+
+.input-field {
+    height: 35px;
+    width: 100%;
+    position: relative;
+}
+
+.btn-search {
+    width: 40px;
+    position: absolute;
+    left: 3px;
+    top: 10px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.btn-search > i {
+    font-size: 20px;
+    color: #333;
+}
+
+.input-search {
+    height: 100%;
+    width: 100%;
+    border: 1px solid #3b4251;
+    display: block;
+    width: 100%;
+    padding: 10px 32px 10px 45px;
+    font-size: 16px;
+    color: #666;
+    border-radius: 34px;
+    transition: all 0.4s ease;
+    outline: none;
+}
+
+.input-search:focus {
+    border: 1px solid #6f9a37;
 }
 
 .authentication {
@@ -261,6 +306,10 @@ h2.phone-number {
     text-align: center;
     width: 100%;
 }
+
+/* ***** ABOUT ***** */
+
+
 
 /* FONT AWESOME */
 .fa-map-marker, .fa-phone, .fa-envelope, .fa-globe {
