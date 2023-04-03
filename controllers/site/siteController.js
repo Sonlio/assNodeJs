@@ -26,7 +26,7 @@ exports.getProductById = (req, res, next) => {
         .findById(idProd)
         .then(async product => { 
             
-            const commentByProduct = await Comments.find({productId: idProd});
+            const commentByProduct = await Comments.find({productId: idProd}).sort({dateComment: -1});
             const userComment = commentByProduct.map(comment => {
                 return Users.findOne({ _id: comment.userId })
                   .then(user => {
@@ -81,18 +81,25 @@ exports.insertComment = (req, res, next) => {
         productId: idProd
     })
 
-    // Tăng reviewCount lên 1
-    Products
-        .findById(idProd)
-        .then(prod => {
-            prod.reviewCount += 1;
-            return prod.save();
-        })
-        .then(result => {
-            return insertComment.save()
-        })
-        .then(result => {
-            res.redirect('/products/detail/'+idProd);
+    Comments.find({userId: userId, productId: idProd})
+        .then(comments => {
+            if(comments.length >= 3) {
+                return res.send(`<script>alert('Không được bình luận quá 3 lần!')</script>`);
+            }
+            
+            insertComment
+                .save()
+                .then(() => {
+                    return Products.findById(idProd)
+                })
+                .then(prod => {
+                    // Tăng reviewCount lên 1
+                    prod.reviewCount += 1;
+                    return prod.save();
+                })
+                .then(result => {
+                    res.redirect('/products/detail/'+idProd);
+                })
         })
         .catch(err => {
             if(!err.statusCode) {
@@ -122,4 +129,12 @@ exports.deleteComment = (req, res, next) => {
             res.redirect('/products/detail/'+productId);
         })
         .catch(err => console.log(err))
+}
+
+exports.aboutPage = (req, res, next) => {
+    return res.render('site/about');
+}
+
+exports.contactPage = (req, res, next) => {
+    return res.render('site/contact');
 }

@@ -19,8 +19,8 @@
                 <a href="/admin">Admin</a>
             <% }  %>
         <% } else { %>
-            <a href="/account/register" class="link-register">Register</a>
-            <a href="/account/login" class="link-login">Login</a>
+            <a class="link" href="/account/register" class="link-register">Register</a>
+            <a class="link" href="/account/login" class="link-login">Login</a>
         <% } %>
     </div>
 </section>
@@ -33,9 +33,9 @@
         </div>
         <div class="main-menu">
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a class="link active" href="/">Home</a></li>
+                <li><a class="link" href="/about">About</a></li>
+                <li><a class="link" href="/contact">Contact</a></li>
             </ul>
         </div>
         <div class="shopping-cart">
@@ -43,3 +43,14 @@
         </div>
     </div>
 </header>
+
+<script>
+    const links = document.querySelectorAll('.link');
+    const curHref = window.location.href;
+    links.forEach(link => {
+        link.classList.remove('active');
+        if(link.href === curHref) {
+            link.classList.add('active');
+        }
+    })
+</script>

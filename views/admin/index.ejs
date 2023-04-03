@@ -119,7 +119,7 @@
 										<% } %>
 										<td class="td-action">
 											<a class="edit" title="Sửa" href="/admin/editProduct/<%= _id %>"><em class="fa fa-pen-to-square">&nbsp;</em></a> | 
-											<a class="delete" title="Xóa" href="/admin/deleteProduct/<%= _id %>"><em class="fa fa-trash">&nbsp;</em></a>
+											<a id="delete" class="delete" title="Xóa" href="/admin/deleteProduct/<%= _id %>"><em class="fa fa-trash">&nbsp;</em></a>
 										</td>
 									</tr>
 								<% i++ } } else { %>
@@ -133,5 +133,20 @@
 		</div>
 	</div>	<!--/.main-->
 		
+
+	<script>
+		
+		const deleteElements = document.querySelectorAll('#delete');
+
+		deleteElements.forEach(deleteElement => {
+			deleteElement.addEventListener('click', (e) => {
+				if(confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?') === false) {
+				e.preventDefault();
+			}
+		})
+		})
+
+	</script>
+
 </body>
 </html>

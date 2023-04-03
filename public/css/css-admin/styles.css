@@ -455,3 +455,8 @@ input[type=file]:focus {
     border: 1px solid #212121;
     color: #212121;
 }
+
+.active {
+  background-color: #36304a;
+  color: #fff !important;
+}

@@ -1,33 +1,45 @@
-	<div>
-        <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span></button>
-                    <a class="navbar-brand" href="/admin"><span>EvoBook</span>Admin</a>
-                </div>
+<div>
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span></button>
+                <a class="navbar-brand" href="/admin"><span>EvoBook</span>Admin</a>
             </div>
-	    </nav>
-
-        <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-            <div class="profile-sidebar">
-                <div class="profile-userpic">
-                    <img src="/images/images-user/<%= user.image %>" class="img-responsive" alt=""></img>
-                </div>
-                <div class="profile-usertitle">
-                    <div class="profile-usertitle-name"><%= user.fullName %></div>
-                    <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
-                </div>
-                <div class="clear"></div>
-            </div>
-            <div class="divider"></div>
-            <ul class="nav menu">
-                <li class="active"><a href="/admin"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-                <li ><a href="/admin/insertProduct"><em class="fa fa-plus">&nbsp;</em> Insert Product</a></li>
-                <li ><a href="/admin/listUser"><em class="fa fa-user">&nbsp;</em> List User</a></li>
-                <!-- <li><a href="/admin/logout"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li> -->
-            </ul>
         </div>
+    </nav>
+
+    <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+        <div class="profile-sidebar">
+            <div class="profile-userpic">
+                <img src="/images/images-user/<%= user.image %>" class="img-responsive" alt=""></img>
+            </div>
+            <div class="profile-usertitle">
+                <div class="profile-usertitle-name"><%= user.fullName %></div>
+                <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="divider"></div>
+        <ul class="nav menu">
+            <li><a class="link active" href="/admin"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+            <li><a class="link" href="/admin/insertProduct"><em class="fa fa-plus">&nbsp;</em> Insert Product</a></li>
+            <li><a class="link" href="/admin/listUser"><em class="fa fa-user">&nbsp;</em> List User</a></li>
+            <li><a class="link" href="/admin/listComment"><em class="fa fa-comment">&nbsp;</em> List Comment</a></li>
+            <li><a class="link" href="/account/logout"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+        </ul>
     </div>
+</div>
+
+<script>
+    const links = document.querySelectorAll('.link');
+    const curHref = window.location.href;
+    links.forEach(link => {
+        link.classList.remove('active');
+        if(link.href === curHref) {
+            link.classList.add('active');
+        }
+    })
+</script>

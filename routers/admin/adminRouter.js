@@ -25,5 +25,8 @@ router.post('/admin/editProduct', (upload.single('image')), adminController.upda
 router.get('/admin/deleteProduct/:idProd', checkPermission.checkPermission, adminController.deleteProduct);
 router.get('/admin/listUser', checkPermission.checkPermission, adminController.getAllUser);
 router.get('/admin/deleteUser/:idUser', adminController.deleteUser);
+router.get('/admin/listComment', checkPermission.checkPermission, adminController.listComment);
+router.get('/admin/detailComment/:idProd', checkPermission.checkPermission, adminController.detailComment);
+router.get('/admin/detailComment/deleteComment/:idComment', checkPermission.checkPermission, adminController.deleteComment);
 
 module.exports = router;

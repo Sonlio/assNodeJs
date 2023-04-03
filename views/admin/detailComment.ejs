@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>LIST USER</title>
+	<title>DETAIL COMMENT</title>
 	<link href="/css/css-admin/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/css-admin/font-awesome.min.css" rel="stylesheet">
 	<link href="/css/css-admin/datepicker3.css" rel="stylesheet">
@@ -24,13 +24,13 @@
 				<li><a href="/">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">List Users</li>
+				<li class="active">Detail Comment</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">List Users</h1>
+				<h1 class="page-header">Detail Comments</h1>
 			</div>
 		</div><!--/.row-->
 
@@ -43,36 +43,26 @@
 							<thead>
 								<tr class="table100-head">
 									<th>STT</th>
-									<th>Image</th>
-									<th>Full Name</th>
-									<th>Email</th>
-									<th>Phone Number</th>
-									<th>Address</th>
-									<th>Type User</th>
+									<th>Content</th>
+									<th>Date comment</th>
+									<th>User comment</th>
 									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
-								<% if(users.length > 0) {
+								<%
 									let i = 1;
-									for(const user of users) { 
-										const {_id, fullName, email, phoneNumber, address, image, typeUser} = user;
-										%>
+									for(const comment of comments) { %>
 									<tr>
 										<td><%= i %></td>
-										<td class="td-img" ><img src="/images/images-user/<%= image %>" alt=""></td>
-										<td><%= fullName %></td>
-										<td><%= email %></td>
-										<td><%= phoneNumber %></td>
-										<td><%= address %></td>
-										<td><%= typeUser %></td>
+										<td><%= comment.content %></td>
+										<td><%= comment.dateComment.toLocaleDateString('en-GB') %></td>
+										<td><%= comment.userId.fullName%></td>
 										<td class="td-action">
-											<a id="delete" class="delete" title="Xóa" href="/admin/deleteUser/<%= _id %>"><em class="fa fa-trash">&nbsp;</em></a>
+											<a id="deleteComment" class="delete" title="Xóa" href="/admin/detailComment/deleteComment/<%= comment._id %>"><em class="fa fa-trash">&nbsp;</em></a>
 										</td>
 									</tr>
-								<% i++ } } else { %>
-									<tr><td colspan="11">List user is empty!</td></tr>
-								<% } %>
+								<% i++ }%>
 							</tbody>
 						</table>
 					</div>
@@ -82,18 +72,14 @@
 	</div>	<!--/.main-->
 
 	<script>
-		
-		const deleteElements = document.querySelectorAll('#delete');
-
-		deleteElements.forEach(deleteElement => {
-			deleteElement.addEventListener('click', (e) => {
-				if(confirm('Bạn có chắc chắn muốn xóa người dùng này không?') === false) {
-				e.preventDefault();
-			}
+		const deleteComments = document.querySelectorAll('#deleteComment');
+		deleteComments.forEach(deleteComments => {
+			deleteComments.addEventListener('click', (e) => {
+				if(!confirm('Bạn có chắc chắn muốn xóa bình luận này không?')) {
+					e.preventDefault();
+				}
+			})
 		})
-		})
-
 	</script>
-		
 </body>
 </html>

@@ -7,5 +7,7 @@ router.get('/products/detail/:idProd', siteController.getProductById);
 router.post('/products/detail/:idProd', siteController.insertComment);
 router.get('/products/detail/deleteComment/:idComment', siteController.deleteComment);
 router.post('/products/search', siteController.productSearch);
+router.get('/about', siteController.aboutPage);
+router.get('/contact', siteController.contactPage);
 
 module.exports = router;

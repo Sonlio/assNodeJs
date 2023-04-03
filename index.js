@@ -15,7 +15,9 @@ const app = express();
 const port = 5121;
 
 // Khai báo sử dụng body parser
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 app.use(bodyParser.json());
 
 // Khai báo sử dụng ejs, public
@@ -26,7 +28,7 @@ app.use(express.static('./public'));
 // Khai báo sử dụng session
 app.use(session({
     secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
-    saveUninitialized:true,
+    saveUninitialized: true,
     resave: false
 }));
 
