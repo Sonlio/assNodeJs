@@ -12,7 +12,7 @@ const apiRouter = require('./routers/api/apiRouter');
 const mongoose = require('mongoose');
 
 const app = express();
-const port = 5121;
+const port = process.env.PORT || 5121;
 
 // Khai báo sử dụng body parser
 app.use(bodyParser.urlencoded({
