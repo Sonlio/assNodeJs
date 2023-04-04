@@ -181,15 +181,20 @@ exports.getAllUser = (req, res, next) => {
         })
 }
 
-exports.deleteUser = (req, res, next) => {
-    const idUser = req.params.idUser;
+let idUser;
+exports.getUpdateUser = async (req, res, next) => {
+    idUser = req.params.idUser;
+    const user = await Users.findOne({_id: idUser});
 
-    Users.findByIdAndRemove(idUser)
-        .then(() => {
-            res.redirect('/admin/listUser')
-        })
-        .catch(err => console.log(err))
+    return res.render('admin/editUser', {user: user});
 }
+
+exports.postUpdateUser = async (req, res, next) => {
+    await Users.updateOne({_id: idUser}, {
+        typeUser: req.body.typeUser
+    })
+    return res.redirect('/admin/listUser');
+}   
 
 exports.listComment = async (req, res, next) => {
     try {

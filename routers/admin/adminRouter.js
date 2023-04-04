@@ -24,7 +24,8 @@ router.get('/admin/editProduct/:idProd', checkPermission.checkPermission, adminC
 router.post('/admin/editProduct', (upload.single('image')), adminController.updateProduct);
 router.get('/admin/deleteProduct/:idProd', checkPermission.checkPermission, adminController.deleteProduct);
 router.get('/admin/listUser', checkPermission.checkPermission, adminController.getAllUser);
-router.get('/admin/deleteUser/:idUser', adminController.deleteUser);
+router.get('/admin/editUser/:idUser', checkPermission.checkPermission, adminController.getUpdateUser);
+router.post('/admin/editUser', adminController.postUpdateUser);
 router.get('/admin/listComment', checkPermission.checkPermission, adminController.listComment);
 router.get('/admin/detailComment/:idProd', checkPermission.checkPermission, adminController.detailComment);
 router.get('/admin/detailComment/deleteComment/:idComment', checkPermission.checkPermission, adminController.deleteComment);

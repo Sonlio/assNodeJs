@@ -428,6 +428,9 @@ input[type=file]:focus {
     width: 100%;
     font-size: 14px;  
 }
+.readonly {
+  background: rgb(210, 210, 210);
+}
 
 .err-input {
     font-size: 12px;

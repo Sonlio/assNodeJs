@@ -67,7 +67,7 @@
 										<td><%= address %></td>
 										<td><%= typeUser %></td>
 										<td class="td-action">
-											<a id="delete" class="delete" title="Xóa" href="/admin/deleteUser/<%= _id %>"><em class="fa fa-trash">&nbsp;</em></a>
+											<a class="edit" title="Sửa" href="/admin/editUser/<%= _id %>"><em class="fa fa-pen-to-square">&nbsp;</em></a>
 										</td>
 									</tr>
 								<% i++ } } else { %>
@@ -80,20 +80,5 @@
 			</div>
 		</div>
 	</div>	<!--/.main-->
-
-	<script>
-		
-		const deleteElements = document.querySelectorAll('#delete');
-
-		deleteElements.forEach(deleteElement => {
-			deleteElement.addEventListener('click', (e) => {
-				if(confirm('Bạn có chắc chắn muốn xóa người dùng này không?') === false) {
-				e.preventDefault();
-			}
-		})
-		})
-
-	</script>
-		
 </body>
 </html>
