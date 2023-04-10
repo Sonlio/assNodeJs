@@ -5,48 +5,44 @@ exports.getRegister = (req, res, next) => {
     res.render('account/register');
 }
 
-exports.register = (req, res, next) => {
-    const fullName = req.body.fullName;
-    const email = req.body.email;
-    const password = req.body.password;
-    const phoneNumber = req.body.phoneNumber;
-    const address = req.body.address;
-    const typeUser = req.body.typeUser;
-    const file = req.file;
-    const fileName = file.filename;
+exports.register = async (req, res, next) => {
+    try {
+        const file = req.file;
+        const fileName = file.filename;
+        const hashPassword = await bcrypt.hash(req.body.password, 12);
 
-    bcrypt.hash(password, 12)
-        .then(hashedPassword => {
-            const insertUser = new Users({
-                fullName: fullName, 
-                email: email, 
-                password: hashedPassword, 
-                phoneNumber: phoneNumber, 
-                address: address,
-                image: fileName,
-                typeUser: typeUser
-            });
-            return insertUser.save();
+        Users.create({
+            fullName: req.body.fullName, 
+            email: req.body.email, 
+            password: hashPassword, 
+            phoneNumber: req.body.phoneNumber, 
+            address: req.body.address,
+            image: fileName,
+            typeUser: req.body.typeUser
         })
-        .then(user => {
-            res.redirect('/account/login')
-        })
-        .catch(err => console.log(err))
+
+        return res.redirect('/account/login');
+
+    } catch (err) {
+        return res.render('err/404');
+    }
 }
 
 exports.getLogin = (req, res, next) => {
     res.render('account/login');
 }
 
-exports.login = (req, res, next) => {
-    const email = req.body.email;
+exports.login = async (req, res, next) => {
+    try {
+        const email = req.body.email;
+        const user = await Users.findOne({email: email})
+        req.session.user = user;
 
-    Users.findOne({email: email})
-        .then(user => {
-            req.session.user = user;
-            return res.redirect('/');
-        })
-        .catch(err => console.log(err))
+        return res.redirect('/');
+        
+    } catch (err) {
+        return res.render('err/404');
+    }
 }
 
 exports.logout = (req, res, next) => {

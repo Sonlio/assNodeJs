@@ -14,37 +14,37 @@ exports.checkInsertProd = async (req, res, next) => {
     const description = lad.get(req.body, "description", "");
     
     if(validator.isEmpty(nameProduct)) {
-        errors.nameProduct = "Name product không được để trống!";
+        errors.nameProduct = "Name product can't be empty!";
     }
 
     if(validator.isEmpty(price)) {
-        errors.price = "Price không được để trống!";
+        errors.price = "Price can't be empty!";
     } else if(!validator.isFloat(price, { min: 1 })) {
-        errors.price = "Price phải là số dương!";
+        errors.price = "Price must be positive!";
     }
 
     if(validator.isEmpty(discount)) {
-        errors.discount = "Discount không được để trống!!";
+        errors.discount = "Discount can't be empty!!";
     } else if(!validator.isFloat(discount, { min: 1 })) {
-        errors.discount = "Discount phải là số dương!";
+        errors.discount = "Discount must be positive!";
     } else if(!validator.isFloat(discount, { min: 0, max: 100 })) {
-        errors.discount = "Discount phải từ 0 --> 100!";
+        errors.discount = "Discount must be from 0 to 100!";
     }
 
     if(validator.isEmpty(author)) {
-        errors.author = "Author không được để trống!!";
+        errors.author = "Author can't be empty!!";
     }
 
     if(validator.isEmpty(isbn)) {
-        errors.isbn = "ISBN không được để trống!";
+        errors.isbn = "ISBN can't be empty!";
     }
 
     if(validator.isEmpty(year)) {
-        errors.year = "Year không được để trống!!";
+        errors.year = "Year can't be empty!!";
     }
 
     if(validator.isEmpty(description)) {
-        errors.description = "Description không được để trống!!";
+        errors.description = "Description can't be empty!!";
     }
 
     if(!lad.isEmpty(errors)) {

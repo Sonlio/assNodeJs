@@ -12,7 +12,7 @@
 <body>
     
     <%- include('../layout/header') %>
-    <% const {_id, nameProduct, price, discount, author, isbn, year, image, description, reviewCount} = product; %>
+    <% const {_id, nameProduct, price, discount, author, isbn, year, image, description, reviewCount, averageScore} = product; %>
 
     <!-- DETAIL -->
     <section class="detail">
@@ -32,6 +32,15 @@
                         <del><%= price.toLocaleString('vn-VN') %> đ</del>
                     <% } %>
                 </p>
+                <div class="rating-reviewed total-rating-detail">
+                    <% for(let i = 1; i <= 5; i++) { 
+                        if(averageScore >= i) { %>
+                            <span class="icon-star star-on"></span>
+                        <% } else { %>
+                            <span class="icon-star"></span>
+                        <% }
+                     } %>
+                </div>
                 <p class="description-detail"><%= description %></p>
                 <!-- <div class="add-to-cart">
                     <div class="count-input">
@@ -54,12 +63,12 @@
                     <% } %>
                 </div>
                <% for(const comment of comments) {
-                    const {content, dateComment, rating} = comment.comment;
+                    const {content, dateComment, rating} = comment;
                     const dateFormat = `${String(dateComment.getDate()).padStart(2, 0)}/${String(dateComment.getMonth() + 1).padStart(2, 0)}/${dateComment.getFullYear()}`
                %>
                     <div class="comment-show-review">
                         <div class="avatar">
-                            <img src="/images/images-user/<%= comment.userComment.image %>" alt="">
+                            <img src="/images/images-user/<%= comment.userId.image %>" alt="">
                         </div>
                         <div class="text">
                             <div class="rating-reviewed">
@@ -71,13 +80,13 @@
                                     <% }
                                  } %>
                             </div>
-                            <h6 class="author"><%= comment.userComment.fullName %> - <span><%= dateFormat%></span></h6>
+                            <h6 class="author"><%= comment.userId.fullName %> - <span><%= dateFormat%></span></h6>
 
                             <p><%= content %></p>
 
                             <% if(userExist) {
-                                if(comment.userComment._id == userExist._id) { %>
-                                    <a id="delete-comment" class="deteteComment" href="/products/detail/deleteComment/<%= comment.comment._id %>">Xóa</a>
+                                if(comment.userId._id == userExist._id) { %>
+                                    <a id="delete-comment" class="deteteComment" href="/products/detail/deleteComment/<%= comment._id %>">Xóa</a>
                                <% }
                             } %> 
                         </div>
@@ -106,6 +115,13 @@
                             <label for="message">Comment</label>
                             <textarea name="content" id="message" cols="30" rows="10" class="form-control" required></textarea>
                         </div>
+
+                        <% if(locals.message) { %>
+                            <span><%= message %></span>
+
+                        <% } %>
+
+
                         <div class="submit-btn-rate">
                             <button type="submit">Post Comment</button>
                         </div>

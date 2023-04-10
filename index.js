@@ -12,7 +12,7 @@ const apiRouter = require('./routers/api/apiRouter');
 const mongoose = require('mongoose');
 
 const app = express();
-const port = process.env.PORT || 5121;
+const port = 5121;
 
 // Khai báo sử dụng body parser
 app.use(bodyParser.urlencoded({
@@ -48,6 +48,6 @@ app.use(apiRouter);
 
 mongoose.connect("mongodb://127.0.0.1:27017/assNodeJs")
     .then(result => {
-        app.listen(port, () => console.log(`Ứng dụng đang chạy với port: ${5121}`));
+        app.listen(port, () => console.log(`Ứng dụng đang chạy với port: ${port}`));
     })
     .catch(err => console.log(err))

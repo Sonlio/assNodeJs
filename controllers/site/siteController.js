@@ -1,134 +1,120 @@
 const Products = require('../../models/productsModel');
 const Comments = require('../../models/commentsModel');
-const Users = require('../../models/usersModel');
 
-exports.getAllProduct = (req, res, next) => {
-    Products
-        .find()
-        .then(result => {
-            res.render('site/home', {
-                products: result
-            })
+exports.getAllProduct = async (req, res, next) => {
+
+    try {
+        const products = await Products.find();
+        return res.render('site/home', {
+            products: products
         })
-        .catch(err => {
-            if(!err.statusCode) {
-                err.statusCode = 500
-            }
-            next(err);
-        })
+
+    } catch (err) {
+        return res.render('err/404')
+    }
 }
 
-exports.getProductById = (req, res, next) => {
+exports.getProductById = async (req, res, next) => {
     const idProd = req.params.idProd;
     const userExist = req.session.user;
 
-    Products
-        .findById(idProd)
-        .then(async product => { 
-            
-            const commentByProduct = await Comments.find({productId: idProd}).sort({dateComment: -1});
-            const userComment = commentByProduct.map(comment => {
-                return Users.findOne({ _id: comment.userId })
-                  .then(user => {
-                        return {
-                            userComment: user,
-                            comment: comment
-                        }
-                  });
-              });
-
-            Promise.all(userComment).then(userComment => {
-                res.render('site/detail', {
-                    product: product,
-                    comments: userComment,
-                    userExist: userExist 
-                })
+    try {
+        const product = await Products.findById(idProd);
+        if(!product) {
+            return res.render('err/404')
+        } else {
+            const comments = await Comments.find({productId: idProd}).sort({dateComment: -1}).populate('userId');
+    
+            return res.render('site/detail', {
+                product: product,
+                comments: comments,
+                userExist: userExist 
             })
-        })
-        .catch(err => {
-            console.log(err);
-        })
+        }
+
+    } catch (err) {
+        return res.render('err/404')
+    }
+
 }
 
-exports.productSearch = (req, res, next) => {
+exports.productSearch = async (req, res, next) => {
     const dataSearch = req.body.search;
     
-    Products.find({ 
-        $or: [
-                { nameProduct: { $regex: new RegExp(dataSearch, 'i') } },
-                { author: { $regex: new RegExp(dataSearch, 'i') } },
-            ]
+    try {
+        const productFind = await Products.find({$or: [
+            {nameProduct: { $regex: new RegExp(dataSearch, 'i')}},
+            {author: { $regex: new RegExp(dataSearch, 'i')}}
+        ]})
+    
+        return res.render('site/productOfSearch', {
+            products: productFind
         })
-        .then(product => {
-            res.render('site/productOfSearch', {
-                products: product
-            })
-        })
-        .catch(err => console.log(err))
+    } catch (err) {
+        return res.render('err/404');
+    }
 }
 
-exports.insertComment = (req, res, next) => {
-    const idProd = req.params.idProd;
-    const content = req.body.content
+exports.insertComment = async (req, res, next) => {
     const userId = req.session.user._id;
-    const rating = req.body.star;
+    const productId = req.params.idProd;
 
-    const insertComment = new Comments({
-        rating: rating,
-        content: content,
-        dateComment: new Date().toISOString(),
-        userId: userId,
-        productId: idProd
-    })
+    try {
+        const commentOfUser = await Comments.find({userId: userId, productId: productId});
 
-    Comments.find({userId: userId, productId: idProd})
-        .then(comments => {
-            if(comments.length >= 3) {
-                return res.send(`<script>alert('Không được bình luận quá 3 lần!')</script>`);
-            }
+        if(commentOfUser.length >= 3) {
+            return res.send(`Don't comment more than 3 times!`);
             
-            insertComment
-                .save()
-                .then(() => {
-                    return Products.findById(idProd)
-                })
-                .then(prod => {
-                    // Tăng reviewCount lên 1
-                    prod.reviewCount += 1;
-                    return prod.save();
-                })
-                .then(result => {
-                    res.redirect('/products/detail/'+idProd);
-                })
-        })
-        .catch(err => {
-            if(!err.statusCode) {
-                err.statusCode = 500
-            }
-            next(err);
-        })
+        } else {
+            await Comments.create({
+                rating: req.body.star,
+                content: req.body.content,
+                dateComment: new Date().toISOString(),
+                userId: userId,
+                productId: productId
+            })
+
+            const findProduct = await Products.findById(productId);
+            findProduct.reviewCount += 1;
+            const comments = await Comments.find({productId: productId});
+            const reviewCount = comments.length;
+            const totalRate = comments.reduce((total, comment) => total + comment.rating, 0);
+            const averageScore = Math.round(totalRate / reviewCount);
+            findProduct.averageScore = averageScore;
+
+            await findProduct.save();
+
+            return res.redirect(`/products/detail/${productId}`);
+        }
+    } catch(err) {
+        return res.render('err/404')
+    }
 }
 
-exports.deleteComment = (req, res, next) => {
+exports.deleteComment = async (req, res, next) => {
     const idComment = req.params.idComment;
-    let productId;
-    Comments
-        .findById(idComment)
-        .then(comment => {
-            productId = comment.productId;
-            return Products.findById(productId) 
-        })
-        .then(product => {
-            product.reviewCount -= 1;
-            return product.save();
-        })
-        .then(result => {
-            return Comments.findByIdAndRemove(idComment);
-        })
-        .then(result => {
-            res.redirect('/products/detail/'+productId);
-        })
-        .catch(err => console.log(err))
+
+    try {
+        const commentDelete = await Comments.findById(idComment);
+        const idProduct = commentDelete.productId;
+        const findProduct = await Products.findById(idProduct);
+        await Comments.findByIdAndRemove(idComment);
+        findProduct.reviewCount -= 1;
+
+        const comments = await Comments.find({productId: idProduct});
+        const reviewCount = comments.length;
+        const totalRate = comments.reduce((total, comment) => total + comment.rating, 0);
+        const averageScore = reviewCount > 0 ? Math.round(totalRate / reviewCount) : 0;
+        findProduct.averageScore = averageScore;
+
+        await findProduct.save();
+
+        return res.redirect(`/products/detail/${idProduct}`);
+        
+    } catch (err) {
+        // return res.render('err/404');
+        console.log(err);
+    }
 }
 
 exports.aboutPage = (req, res, next) => {

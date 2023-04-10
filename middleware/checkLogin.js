@@ -11,22 +11,22 @@ exports.checkLogin = async (req, res, next) => {
     const password = lad.get(req.body, "password", "");
 
     if(validator.isEmpty(email)) {
-        errors.email = "Email không được để trống!";
+        errors.email = "Email can't be empty!";
     } else {
         const existEmail = await Users.findOne({ email: email });
         if (!existEmail) {
-            errors.email = "Email không tồn tại!";
+            errors.email = "Email doesn't exist!";
         }
     }
 
     if(validator.isEmpty(password)) {
-        errors.password = "Password không được để trống!";
+        errors.password = "Password can't be empty!";
     } else {
         const user = await Users.findOne({email: email});
         if(user) {
             const comparePass = await bcrypt.compare(password, user.password)
             if(!comparePass) {
-                errors.password = "Password không trùng khớp!"
+                errors.password = "Wrong password!"
             }
         }
     }

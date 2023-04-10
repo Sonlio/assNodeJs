@@ -1,42 +1,36 @@
 const Products = require('../../models/productsModel');
 
-exports.getAllProduct = (req, res, next) => {
-    Products
-        .find()
-        .then(products => {
-            res.status(200).json({
-                message: "Lấy thành công tất cả sản phẩm!",
-                products: products
-            })
+exports.getAllProduct = async (req, res, next) => {
+    try {
+        const products = await Products.find();
+        return res.status(200).json({
+            message: "Get all product successfully!",
+            products: products
         })
-        .catch(err => {
-            if(!err.statusCode) {
-                err.statusCode = 500
-            }
-            next(err);
-        })
+
+    } catch (err) {
+        console.log(err);
+    }
 }
 
-exports.getByIsbn = (req, res, next) => {
-    const isbn = req.params.isbn;
+exports.getByIsbn = async (req, res, next) => {
+    
+    try {
+        const isbn = req.params.isbn;
+        const product = await Products.findOne({isbn: isbn});
+        if(!product) {
+            return res.status(404).json({
+                message: 'Not found product!',
+            })
 
-    Products.findOne({isbn: isbn})
-        .then(product => {
-            if(!product) {
-                const error = new Error('Không tìm thấy sản phẩm!');
-                error.statusCode = 404;
-                throw error;
-            }
-
+        } else {
             res.status(200).json({
-                message: "Đã tìm thấy sản phẩm!",
+                message: "Product found successfully!",
                 product: product
             })
-        })
-        .catch(err => {
-            if(!err.statusCode) {
-                err.statusCode = 500
-            }
-            next(err);
-        })
+        }
+
+    } catch (err) {
+        console.log(err);
+    }
 }

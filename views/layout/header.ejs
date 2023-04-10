@@ -7,9 +7,10 @@
         <div class="input-field">
             <form action="/products/search" method="post">
                 <button class="btn-search" ><i class="fa-solid fa-magnifying-glass"></i></button>
-                <input class="input-search" type="text" name="search" placeholder="Tìm kiếm">
+                <input class="input-search" type="text" name="search" placeholder="Tìm kiếm" required>
             </form>
         </div>
+        <div id="data-search"></div>
     </div>
     <div class="authentication">
         <% if(user) { %>

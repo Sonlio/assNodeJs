@@ -249,6 +249,10 @@ li {
     margin-left: 10px;
 }
 
+.rating-home {
+    margin-top: 5px;
+}
+
 /* FOOTER */
 .footer {
     background: #06080f;
