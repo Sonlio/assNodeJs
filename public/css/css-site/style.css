@@ -87,14 +87,23 @@ li {
     text-align: center;
 }
 
-.authentication > a {
+.authentication > li {
+    display: inline-block;
+}
+
+.authentication > li > a {
     color: #252525;
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
     text-transform: uppercase;
     transition: all 300ms ease-in 0s;
-    padding: 0px 20px;
+    display: block;
+    padding: 7px 7px;
+}
+
+.authentication > li > a:hover {
+    color: #c38748;
 }
 
 .name-user-login {
@@ -102,11 +111,55 @@ li {
     text-transform: uppercase;
     font-weight: 600;
     font-size: 14px;
+    position: relative;
+    display: block;
+    cursor: pointer;
+    display: block;
 }
 
-.authentication > a:hover {
-    color: #c38748;
-    background: #fff;
+.name-user-login::before {
+    content: "";
+    height: 10px;
+    width: 155px;
+    position: absolute;
+    top: 80%;
+}
+
+.name-user-login > ul {
+    position: absolute;
+    left: 35%;
+    display: none;
+    background-color: #dedede;
+    text-align: left;
+    margin-top: 7px;
+}
+
+.name-user-login > ul > li {
+    border-top: 1px dotted gray;
+}
+
+.name-user-login > ul > li:first-child {
+    border-top: none;
+}
+
+.name-user-login > ul > li > a {
+    color: #252525;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 300ms ease-in 0s;
+    display: block;
+    padding: 7px 7px;
+}
+
+.name-user-login:hover > ul {
+    display: block;
+}
+
+.name-user-login > ul > li > a:hover {
+    color: #fff;
+    background: #c38748;
 }
 
 /* MENU */

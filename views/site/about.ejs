@@ -7,13 +7,28 @@
     <link rel="stylesheet" href="/css/css-site/style.css">
     <link rel="stylesheet" href="/css/css-site/about.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>HOME</title>
+    <title>ABOUT</title>
 </head>
 <body>
     
     <%- include('../layout/header') %>
 
-    
+    <section class="about">
+        <div class="box-about">
+            <div class="box-left-about">
+                <h1>A word from <span>the Author</span></h1>
+                <p>
+                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that more-or-less normal distribution of letters, as opposed to using'Content here,content here',making it look like readable English. Many desktop puhing packages and web page editors now.
+                </p>
+                <div class="signature">
+                    <img src="/images/images-design/signature.webp" alt="">
+                </div>
+            </div>
+            <div class="box-right-about">
+                <img src="/images/images-design/authorAbout.webp" alt="">
+            </div>
+        </div>
+    </section>
 
     <%- include('../layout/footer.ejs') %>
 </body>

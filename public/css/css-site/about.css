@@ -1,0 +1,33 @@
+.box-about {
+    max-width: 1170px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.box-left-about {
+    width: 60%;
+    padding: 90px 40px 0px 20px;
+}
+
+.box-left-about > h1{
+    color: #333;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.box-left-about > h1 > span{
+    color: #6f9a37;
+}
+
+.box-left-about > p{
+    color: #838383;
+    font-size: 17px;
+    margin-bottom: 40px;
+    line-height: 25px;
+}
+
+.box-right-about {
+    width: 40%;
+}

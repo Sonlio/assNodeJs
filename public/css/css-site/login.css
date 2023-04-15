@@ -67,7 +67,44 @@
 }
 
 .btn {
-    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.btn-forgot-pass, .btn-change-pass {
+    background: #212121;
+    border: 1px solid #212121;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 12px;
+    padding: 10px 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.2s linear;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.forgot-password {
+    margin-left: 43px;
+    color: #555;
+    font-size: 14px;
+    display: block;
+}
+
+.change-password {
+    margin-top: 7px;
+}
+
+.change-password:hover {
+    color: green;
+}
+
+.forgot-password:hover {
+    color: red;
 }
 
 .btn-login {
@@ -81,7 +118,6 @@
     text-transform: uppercase;
     transition: all 0.2s linear;
     cursor: pointer;
-    margin-top: 30px;
 }
 
 .btn-login:hover {

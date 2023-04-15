@@ -463,3 +463,11 @@ input[type=file]:focus {
   background-color: #36304a;
   color: #fff !important;
 }
+
+.rating-list-admin {
+  justify-content: center;
+}
+
+.rating-list-admin > span {
+  font-size: 15px;
+}

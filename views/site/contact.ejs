@@ -1,19 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/css-site/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>HOME</title>
-</head>
-<body>
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/css-site/style.css" />
+    <link rel="stylesheet" href="/css/css-site/contact.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>CONTACT</title>
+  </head>
+  <body>
     <%- include('../layout/header') %>
 
-
+    <section class="contact">
+      <div class="box-contact">
+        <div class="box-left-contact">
+          <div class="map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1554.7603435573365!2d108.16948203127232!3d16.07580689278908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314218e6e72e66f5%3A0x46619a0e2d55370a!2zMTM3IE5ndXnhu4VuIFRo4buLIFRo4bqtcCwgVGhhbmggS2jDqiBUw6J5LCBMacOqbiBDaGnhu4N1LCDEkMOgIE7hurVuZywgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1681571844382!5m2!1svi!2s"
+              width="800"
+              height="450"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+        <div class="box-right-contact">
+          <div class="content-contact">
+            <h1>Address</h1>
+            <p><span class="title-address">Location:</span> 137 Nguyen Thi Thap, Hoa Minh, Lien Chieu, Da Nang</p>
+            <p><span class="title-address">Phone:</span> +84 901 749 631</p>
+            <p><span class="title-address">Mail:</span> <a href="mailto:levansonsvqb@gmail.com">levansonsvqb@gmail.com</a></p>
+            <p><span class="title-address">Web:</span> <a href="#">evobook@fpt.com</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <%- include('../layout/footer.ejs') %>
-</body>
+  </body>
 </html>

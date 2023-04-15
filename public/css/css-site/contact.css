@@ -1,0 +1,40 @@
+.box-contact {
+    max-width: 1170px;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.box-left-contact {
+    width: 70%;
+}
+
+.box-right-contact {
+    width: 30%;
+}
+
+.content-contact {
+    padding: 40px 20px;
+    background: #313131;
+    height: 100%;
+}
+
+.content-contact > h1 {
+    color: #fff;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.content-contact > p {
+    color: #b7b7b7;
+    line-height: 25px;
+}
+
+.title-address {
+    display: inline-block;
+    width: 80px;
+}
+
+.content-contact > p > a {
+    color: #6f9a37;
+}

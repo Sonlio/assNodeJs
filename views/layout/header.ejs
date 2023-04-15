@@ -14,14 +14,21 @@
     </div>
     <div class="authentication">
         <% if(user) { %>
-            <span class="name-user-login">Hello baby: <%= user.fullName%></span>
-            <a class="logout" href="/account/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
-            <% if(user.typeUser === 1) { %>
-                <a href="/admin">Admin</a>
-            <% }  %>
-        <% } else { %>
-            <a class="link" href="/account/register" class="link-register">Register</a>
-            <a class="link" href="/account/login" class="link-login">Login</a>
+            <span class="name-user-login">Hello baby: <%= user.fullName%> <i class="fa-sharp fa-solid fa-circle-chevron-down"></i>
+                <ul>
+                    <li><a class="logout" href="/account/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+                    <li><a class="change-password" href="/account/change-password"><i class="fa-solid fa-pen-to-square"></i> Change password</a></li>
+                    
+                <% if(user.typeUser === 1) { %>
+                    <li><a href="/admin"><i class="fa-solid fa-screwdriver-wrench"></i> Admin</a></li>
+                <% }  %>
+                
+                <% } else { %>
+                    <li><a class="link" href="/account/register" class="link-register">Register</a></li>
+                    <li><a class="link" href="/account/login" class="link-login">Login</a></li>
+                </ul>
+            </span>
+         
         <% } %>
     </div>
 </section>

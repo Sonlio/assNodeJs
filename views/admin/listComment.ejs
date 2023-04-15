@@ -8,6 +8,7 @@
 	<link href="/css/css-admin/font-awesome.min.css" rel="stylesheet">
 	<link href="/css/css-admin/datepicker3.css" rel="stylesheet">
 	<link href="/css/css-admin/styles.css" rel="stylesheet">
+	<link href="/css/css-site/detail.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	
@@ -24,13 +25,13 @@
 				<li><a href="/">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li>List Comment</li>
+				<li>Products Comment</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">List Comments</h1>
+				<h1 class="page-header">Products Comments</h1>
 			</div>
 		</div><!--/.row-->
 
@@ -44,6 +45,7 @@
 								<tr class="table100-head">
 									<th>STT</th>
 									<th>Product</th>
+									<th>Average Rating</th>
 									<th>Total comment</th>
 									<th>Action</th>
 								</tr>
@@ -55,6 +57,17 @@
 									<tr>
 										<td><%= i %></td>
 										<td><%= productComment.nameProduct %></td>
+										<td>
+											<div class="rating-reviewed rating-list-admin">
+												<% for(let i = 1; i <= 5; i++) { 
+													if(productComment.averageScore >= i) { %>
+														<span class="icon-star star-on"></span>
+													<% } else { %>
+														<span class="icon-star"></span>
+													<% }
+												 } %>
+											</div>
+										</td>
 										<td><%= productComment.reviewCount %></td>
 										<td class="td-action">
 											<a title="Chi tiết" href="/admin/detailComment/<%= productComment._id %>"><em class="fa fa-circle-info">&nbsp;</em></a>
