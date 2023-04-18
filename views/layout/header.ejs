@@ -7,14 +7,14 @@
         <div class="input-field">
             <form action="/products/search" method="post">
                 <button class="btn-search" ><i class="fa-solid fa-magnifying-glass"></i></button>
-                <input class="input-search" type="text" name="search" placeholder="Tìm kiếm" required>
+                <input class="input-search" type="text" name="search" placeholder="Search..." required>
             </form>
         </div>
         <div id="data-search"></div>
     </div>
     <div class="authentication">
         <% if(user) { %>
-            <span class="name-user-login">Hello baby: <%= user.fullName%> <i class="fa-sharp fa-solid fa-circle-chevron-down"></i>
+            <span class="name-user-login">Hello: <%= user.fullName%> <i class="fa-sharp fa-solid fa-circle-chevron-down"></i>
                 <ul>
                     <li><a class="logout" href="/account/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
                     <li><a class="change-password" href="/account/change-password"><i class="fa-solid fa-pen-to-square"></i> Change password</a></li>

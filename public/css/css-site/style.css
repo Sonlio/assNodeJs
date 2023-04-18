@@ -127,7 +127,7 @@ li {
 
 .name-user-login > ul {
     position: absolute;
-    left: 35%;
+    left: 231px;
     display: none;
     background-color: #dedede;
     text-align: left;
@@ -287,7 +287,7 @@ li {
 }
 
 .price-book {
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 600;
     color: #b80909;
     width: 100%;

@@ -25,7 +25,7 @@ exports.checkInsertProd = async (req, res, next) => {
 
     if(validator.isEmpty(discount)) {
         errors.discount = "Discount can't be empty!!";
-    } else if(!validator.isFloat(discount, { min: 1 })) {
+    } else if(!validator.isFloat(discount, { min: 0 })) {
         errors.discount = "Discount must be positive!";
     } else if(!validator.isFloat(discount, { min: 0, max: 100 })) {
         errors.discount = "Discount must be from 0 to 100!";

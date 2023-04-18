@@ -57,9 +57,9 @@
             <div class="show-review">
                 <div class="title-show-review">
                     <% if(reviewCount > 0) { %>
-                        <h2><%= reviewCount %> Review For <%= nameProduct %></h2>
+                        <h2><%= nameProduct %> có <%= reviewCount %> đánh giá</h2>
                     <% } else { %>
-                        <h2>No reviews yet!</h2>
+                        <h2>Chưa có đánh giá nào!</h2>
                     <% } %>
                 </div>
                <% for(const comment of comments) {
@@ -95,9 +95,9 @@
             </div>
             
             <% if(user) { %>
-                <div class="title-rating"><h2>Add A Review</h2></div>
+                <div class="title-rating"><h2>Thêm đánh giá</h2></div>
                 <div class="rating">
-                    <p>Your Rating</p>
+                    <p>Xếp hạng</p>
                     <form action="/products/detail/<%= _id %>" class="form-rate" method="post">
                         <span class="rating-block">
                             <input type="radio" name="star" id="star1" value="5">
@@ -112,7 +112,7 @@
                             <label for="star5"></label>
                         </span>
                         <div class="form-group">
-                            <label for="message">Comment</label>
+                            <label for="message">Bình luận</label>
                             <textarea name="content" id="message" cols="30" rows="10" class="form-control" required></textarea>
                         </div>
 
@@ -121,14 +121,17 @@
 
                         <% } %>
 
+                        <% if(typeof message !== 'undefined') { %>
+                            <span><%= message %></span>
+                        <% } %>
 
                         <div class="submit-btn-rate">
-                            <button type="submit">Post Comment</button>
+                            <button type="submit">Đăng</button>
                         </div>
                     </form>
                 </div>
             <% } else { %>
-                <p class="login-to-review">You must <a href="/account/login">login</a> or <a href="/account/register">register</a> to rate this product!</p>
+                <p class="login-to-review">Bạn phải <a href="/account/login">đăng nhập</a> hoặc <a href="/account/register">đăng ký</a> để bình luận về sản phẩm này!</p>
             <% } %>
         </div>
     </section>

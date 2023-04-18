@@ -28,10 +28,6 @@ const Users = new Schema({
     },
     typeUser: {
         type: Number,
-    },
-    codeResetPassword: {
-        type: Number,
-        default: null
     }
 })
 

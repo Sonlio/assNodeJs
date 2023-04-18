@@ -63,7 +63,7 @@ exports.insertComment = async (req, res, next) => {
         const commentOfUser = await Comments.find({userId: userId, productId: productId});
 
         if(commentOfUser.length >= 3) {
-            return res.send(`Don't comment more than 3 times!`);
+            return res.send(`<script>alert("Don't comment more than 3 times!");window.history.back();</script>`);
             
         } else {
             await Comments.create({
