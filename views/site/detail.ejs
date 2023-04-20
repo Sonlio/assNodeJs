@@ -84,8 +84,8 @@
 
                             <p><%= content %></p>
 
-                            <% if(userExist) {
-                                if(comment.userId._id == userExist._id) { %>
+                            <% if(user) {
+                                if(comment.userId._id == user._id) { %>
                                     <a id="delete-comment" class="deteteComment" href="/products/detail/deleteComment/<%= comment._id %>">Xóa</a>
                                <% }
                             } %> 

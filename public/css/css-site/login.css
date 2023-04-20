@@ -120,7 +120,7 @@
     cursor: pointer;
 }
 
-.btn-login:hover {
+.btn-login:hover, .btn-forgot-pass:hover, .btn-change-pass:hover {
     background: #fff;
     border: 1px solid #212121;
     color: #212121;

@@ -239,7 +239,7 @@ h6.author > span {
 .rating-block {
     display: flex;
     flex-direction: row-reverse;
-    justify-content: flex-end;
+    justify-content: start;
     align-items: center;
 }
 
@@ -260,7 +260,8 @@ h6.author > span {
 
 .rating-block > input[type="radio"]:checked ~ label::before,
 .rating-block > label:hover::before,
-.rating-block > label:hover ~ label::before {
+.rating-block > label:hover ~ label::before 
+{
     color: #fec701;
 }
 

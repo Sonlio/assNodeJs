@@ -16,7 +16,7 @@ exports.getAllProduct = async (req, res, next) => {
 
 exports.getProductById = async (req, res, next) => {
     const idProd = req.params.idProd;
-    const userExist = req.session.user;
+    // const userExist = req.session.user;
 
     try {
         const product = await Products.findById(idProd);
@@ -28,7 +28,7 @@ exports.getProductById = async (req, res, next) => {
             return res.render('site/detail', {
                 product: product,
                 comments: comments,
-                userExist: userExist 
+                // userExist: userExist 
             })
         }
 
